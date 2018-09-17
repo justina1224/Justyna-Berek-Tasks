@@ -28,10 +28,4 @@ public class TaskMapper {
                 .map(t -> new TaskDto(t.getId(), t.getTitle(), t.getContent()))
                 .collect(Collectors.toList());
     }
-
-    public void voidMapToTaskDto(final Long taskId) {
-    }
-
-    public void voidMapToTask(final Long taskId) {
-    }
 }
