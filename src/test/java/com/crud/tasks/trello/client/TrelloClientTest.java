@@ -1,12 +1,10 @@
 package com.crud.tasks.trello.client;
 
-import com.crud.tasks.domain.BadgesDto;
+import com.crud.tasks.domain.Badges;
 import com.crud.tasks.domain.CreatedTrelloCard;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
 import com.crud.tasks.trello.config.TrelloConfig;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -72,15 +70,13 @@ public class TrelloClientTest {
                 "Test task",
                 "Test description",
                 "top",
-                "test_id",
-                new BadgesDto());
+                "test_id");
 
         URI uri = new URI("http://test.com/cards?key=test&token=test&name=Test%20task&desc=Test%20description&pos=top&idList=test_id");
 
         CreatedTrelloCard createdTrelloCard = new CreatedTrelloCard(
                 "1",
                 "Test task",
-                new BadgesDto(),
                 "http://test.com"
         );
 

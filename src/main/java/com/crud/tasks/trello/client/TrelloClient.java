@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -64,21 +65,5 @@ public class TrelloClient {
                 .build().encode().toUri();
 
         return restTemplate.postForObject(url, null, CreatedTrelloCard.class);
-    }
-
-    public CreatedTrelloCard createNewCardWithBadges(TrelloCardDto trelloCardDto) {
-        URI url = UriComponentsBuilder.fromHttpUrl((trelloConfig.getTrelloApiEndpoint() + "/cards"))
-                .queryParam("key", trelloConfig.getTrelloAppKey())
-                .queryParam("token", trelloConfig.getTrelloToken())
-                .queryParam("name", trelloCardDto.getName())
-                .queryParam("desc", trelloCardDto.getDescription())
-                .queryParam("pos", trelloCardDto.getPos())
-                .queryParam("idList", trelloCardDto.getListId())
-                .queryParam("board", trelloCardDto.getBadgesDto().getAttachmentsByType().getTrello().getBoard())
-                .queryParam("card", trelloCardDto.getBadgesDto().getAttachmentsByType().getTrello().getCard())
-                .build().encode().toUri();
-
-        return restTemplate.postForObject(url, null, CreatedTrelloCard.class);
-
     }
 }
